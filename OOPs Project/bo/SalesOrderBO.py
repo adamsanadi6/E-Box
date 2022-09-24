@@ -1,0 +1,2 @@
+class SalesOrderBO:
+    pass
