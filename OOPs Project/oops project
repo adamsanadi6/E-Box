@@ -1,0 +1,2006 @@
+
+BestBuy Electronix has been one of the premier electronic appliances and good dealership company with branches spread across multiple states. They have most comprehensive ranges of branded products for sale in the market. A lot of their stock has been driven by customer demand. They are experts at sourcing exactly what the client needs and offering at the best affordable price. Customer satisfaction is their primary goal and they are always looking to please their clients.
+
+Following are the business objectives of BestBuy Electronix:
+
+Exceed Customer Expectations
+Provide Goods at best prices
+Provide Quality products
+Problem Specifications
+
+Consider a class Brand with the following private attributes.
+
+Attribute	Data Type
+__id	          int
+__name	          str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class ProductType with the following private attributes.
+
+Attribute	Data Type
+__id	          int
+__name	          str
+__description	  str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class ProductCategory with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__description	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class Product with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__brand	Brand
+__color	str
+__material	str
+__price	float
+__active	boolean
+__quantity	int
+__product_type	ProductType
+__product_category	ProductCategory
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class User with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__username	str
+__password	str
+__mobile_number	str
+__email	str
+__address	str
+__role	Role
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class Role with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class SalesOrder with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__customer	User
+__quantity	int
+__total_price	float
+__tax_amount	float
+__sales_lead	User
+__sale_date	Date
+__item_list	Objects of SalesOrderItem in List
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class SalesOrderItem with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__product	Product
+__quantity	int
+__unit_price	float
+__sales_order	SalesOrder
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class PurchaseOrder with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__supplier	Supplier
+__quantity	int
+__total_price	float
+__tax_amount	float
+__product_lead	User
+__purchased_date	Date
+__item_list	Objects of PurchaseOrderItem in List
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class PurchaseOrderItem with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__product	Product
+__quantity	int
+__unit_price	float
+__purchase_order	PurchaseOrder
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class Supplier with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__mobile_number	str
+__email	str
+__address	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+
+DBMS create scripts and insert queries are available as part of code template.The table and column names are case sensitive.
+
+mysql.properties : 
+[DatabaseSection]
+db.host=localhost
+db.schema=testdb
+db.username=root
+db.password=student
+
+Use the below code to retrieve the connection details from mysql.properties to establish connection 
+config.read('mysql.properties')
+dburl = config.get('DatabaseSection', 'db.host');
+dbname = config.get('DatabaseSection', 'db.schema');
+username = config.get('DatabaseSection', 'db.username');
+password = config.get('DatabaseSection', 'db.password');
+port = config.get('DatabaseSection', 'db.port');
+
+Important note - Please start working on the template code which is provided. The template code will provide the base template or format in which the end solution is expected from you. Template code is not an executable code and will help you add code on top of it to ensure you make your submissions in the right format. If the submission is NOT as per the template code format the submissions will not be accepted.
+
+[All text in bold corresponds to the input and the rest corresponds to the output].
+
+ 
+
+Implement the following functional requirements one by one.
+
+Functional Requirement1 – User Login
+
+Users should be able to login with their credentials to view the BestBuy Electronix application. If the user is logging in with invalid credentials, display appropriate error messages else allow the user to login.
+
+Classes Involved: Role, RoleDAO, User, UserDAO
+
+Implement the following method present in the RoleDAO class
+
+Method	Description
+def obtain_role_by_id(self,roleId)	This method returns the role object with the id same as in parameter.
+ 
+
+Implement the following method present in the UserDAO class
+
+Method	Description
+def validate_login(self,username,password)	This method validates the username and password and returns the user object.
+
+
+Sample Input and Output1:
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid
+[Note: Successfully logged in. Please proceed with the next functional requirement.]
+
+
+Functional Requirement2 – Add Brand, Product Type, Product Category, Product
+Add brand, product type, product category and product. This facility should be available for store manager or product lead or sales lead role only.
+
+Classes Involved: Role, RoleDAO, User, UserDAO, Brand, BrandDAO, ProductType, ProductTypeDAO, ProductCategory, ProductCategoryDAO, Product, ProductDAO
+
+
+Implement the following method present in the class BrandDAO.
+
+Method	Description
+def add_brand(self,brand)	This method inserts the brand details to the database.
+def obtain_brand_by_id(self,id)	This method returns the brand object with the id same as in parameter.
+def obtain_all_brand(self)	This method returns list of brands which is retrieved from the database.
+def display_brand()	This method displays the details of all available brands.
+Display Brand Details using the below format.
+print("%-5s %-15s\n"%("Id","Name"));
+ 
+
+Implement the following method present in the class ProductTypeDAO.
+Method	Description
+def add_product_type(self,productType)	This method inserts the product type details to the database.
+def obtain_product_type_by_id(self,id)	This method returns the product type object with the id same as in parameter.
+def obtain_all_product_type(self)	This method returns list of product types which is retrieved from the database.
+def display_product_type(self)	This method displays the details of all available product types.
+Display Product Type Details using the below format.
+print("%-5s %-15s %-15s\n"%("Id","Name","Description"));
+ 
+
+Implement the following methods present in the class ProductCategoryDAO.
+Method	Description
+def add_product_category(self,productCategory)	This method inserts the product category details to the database.
+def obtain_product_category_by_id(self,id)	This method returns the product category object with the id same as in parameter.
+def obtain_all_product_Category(self)	This method returns list of product categories which is retrieved from the database.
+def display_product_category(self)	This method displays the details of all available product categories.
+Display Product Category Details using the below format.
+print("%-5s %-30s %-15s\n"%("Id","Name","Description"));
+
+Implement the following methods present in the class ProductDAO.
+
+Method	Description
+def add_product(self,product)	This method inserts the product details to the database.
+
+
+Sample Input and Output2: [ In the menu list, there will be lot of menus. For this functional requirement, complete first 4 menus]
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+rani
+Enter Password
+rani
+Sorry. You don't have permission to access.
+1.Login
+2.Exit
+Choose from the above menu
+Enter Username
+srideviharish
+Enter Password
+srid
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+1
+Enter Name:
+Smartphone
+Enter Description:
+Mobile
+Product type already exists.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+1
+Enter Name:
+Dumbbells
+Enter Description:
+Home Gym
+Product Type Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+2
+Enter Name:
+Electronics
+Enter Description:
+Electronic items
+Product category already exists.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+2
+Enter Name:
+Books
+Enter Description:
+Book items
+Product Category Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+3
+Enter Name:
+Apple
+Brand already exists.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+3
+Enter Name:
+Alpha
+Brand Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+4
+Enter Product Name:
+iPhone 11 Pro
+Enter Product Color:
+Midnight green
+Enter Product Material:
+Aluminium
+Enter Product Price:
+99900
+Enter Product Quantity:
+4
+Choose (Id) Brand:
+Id    Name           
+1     Apple          
+2     Samsung        
+3     SkyBag         
+4     Adidas         
+5     Nike           
+6     American Tourister
+7     Lotus          
+8     Nivea          
+9     Alpha         
+1
+Choose (Id) from below product types:
+Id    Name            Description    
+1     Smartphone      Mobile         
+2     Tablet          Tablets and accessories
+3     Bagpack         Bagpack        
+4     Shoe            Shoe           
+5     Toys            Toys           
+6     Jewellery       Jewelleries    
+7     Dumbbells       Home Gym  
+1
+Choose (Id) from below product category:
+Id    Name                           Description    
+1     Electronics                    Electronics    
+2     Fashion                        Fashion        
+3     Footware                       Footwares      
+4     Home and Furniture             Home and Furniturs
+5     Books             Book items
+1
+Product with the entered specification already exists. Product could not be added.
+4
+Enter Product Name:
+Story Book
+Enter Product Color:
+Brown
+Enter Product Material:
+Paper
+Enter Product Price:
+900
+Enter Product Quantity:
+2
+Choose (Id) Brand:
+Id    Name           
+1     Apple          
+2     Samsung        
+3     SkyBag         
+4     Adidas         
+5     Nike           
+6     American Tourister
+7     Lotus          
+8     Nivea          
+9     Alpha         
+1
+Choose (Id) from below product types:
+Id    Name            Description    
+1     Smartphone      Mobile         
+2     Tablet          Tablets and accessories
+3     Bagpack         Bagpack        
+4     Shoe            Shoe           
+5     Toys            Toys           
+6     Jewellery       Jewelleries    
+7     Dumbbells       Home Gym   
+1
+Choose (Id) from below product category:
+Id    Name                           Description    
+1     Electronics                    Electronics    
+2     Fashion                        Fashion        
+3     Footware                       Footwares      
+4     Home and Furniture             Home and Furniturs
+5     Books             Book items
+1
+Product Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+11
+Successfully logged out!
+1.Login
+2.Exit
+Choose from the above menu
+2
+Thank you!
+
+Functional Requirement3 – Search Product, Edit Product, Display Products
+
+Search Product, Edit Product, Display Products. This facility should be available for store manager or product lead or sales lead role only.
+
+Classes Involved: Role, RoleDAO, User, UserDAO, Brand, BrandDAO, ProductType, ProductTypeDAO, ProductCategory, ProductCategoryDAO, Product, ProductDAO.
+[Note: All the methods implemented in the functional requirement2 need to be included here as well. In addition to it we have few more methods to implement here.]
+
+Implement the following methods present in the class ProductDAO.
+
+Method	Description
+def add_product(self,product)	This method inserts the product details to the database.
+def obtain_all_products(self)	This method returns list of products which is retrieved from the database.
+def obtain_product_by_id(def,id)	This method returns the product object with the id same as in parameter.
+def update_product(self,product)	This method updates the details of the product in the database.
+def obtain_product_by_name(self,name)	This method returns the product object with the name same as in parameter.
+def display_all_products(self)	Display Product Details using the below format.
+print("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n"%("Id", "Product Name","Brand","Color","Material","Price","Available Quantity","Product Type","Product Category"));
+
+Sample Input and Output3: [ In the menu list, there will be lot of menus. For this functional requirement, 5-7 menus need to be done]
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+vidhya
+Enter Password
+vidhya
+Sorry. You don't have permission to access.
+1.Login
+2.Exit
+Choose from the above menu
+Enter Username
+srideviharish
+Enter Password
+srid
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+6
+Product Details:
+Id                   Product Name         Brand                Color                Material             Price                Available Quantity   Product Type         Product Category    
+1                    iPhone 11 Pro        Apple                Midnight green       Aluminium            99900.00             4                    Smartphone           Electronics         
+2                    iPhone 7 Plus        Apple                Gold                 Aluminium            35000.00             4                    Smartphone           Electronics         
+3                    Skybag New Edition   SkyBag               Blue                 Waterproof fabrics   2999.00              12                   Bagpack              Fashion             
+4                    Jogging shoes        Adidas               Blue                 EVA                  3000.00              4                    Shoe                 Footware      
+5                    Story Book           Apple                Brown                Paper                900.00               2                    Bagpack              Electronics         
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+5
+Enter Product Id:
+10
+Product not found.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+5
+Enter Product Id:
+4
+Enter Product Details:
+Enter Name:
+Jogging shoes
+Enter Color:
+Blue
+Enter Material:
+EVA
+Enter price:
+3000
+Enter Quantity:
+4
+Is the product active?(yes/no)
+yes
+Product details updated successfully.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+7
+Enter Product Name:
+iPad
+Product not found.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+7
+Enter Product Name:
+iPhone 11 Pro
+Product Details:
+Id                   Product Name         Brand                Color                Material             Price                Available Quantity   Product Type         Product Category    
+1                    iPhone 11 Pro        Apple                Midnight green       Aluminium            99900.00             4                    Smartphone           Electronics      
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+11
+Successfully logged out!
+1.Login
+2.Exit
+Choose from the above menu
+2
+Thank you!
+
+
+Functional Requirement4 – Create Sales Order, Display Sales Order, Create Purchase Order
+
+Create Sales Order, Display Sales Order, Create Purchase Order. This facility should be available for store manager or product lead or sales lead role only.
+
+Classes Involved: SalesOrder, SalesOrderDAO, SalesOrderItem, SalesOrderItemDAO, Supplier, SupplierDAO
+
+Implement the following methods present in the class SalesOrderItemDAO
+Method	Description
+def obtain_sales_order_item_by_id(self,id)	This method returns the sales order item object with the id same as in parameter.
+def obtain_all_sales_order_items(self)	This method returns list of sales order items obtained from Database.
+ 
+
+Implement the following methods present in the class SalesOrderDAO.
+Method	Description
+def add_sales_order(self,salesOrder)	This method adds the Sales Order details to the Database.
+def obtain_all_sales_order(self)	This method returns list of Sales Order retrieved from the Database.
+def display_sales_order(self)	Display Sales Order Details using the below format.
+print("%-20s %-20s %-20s %-20s %-20s %-20s\n"%("User Name", "Order Quantity","Total Price","Tax Amount","Sales Lead","Sale Date"));
+
+Implement the following methods present in the class PurchaseOrderItemDAO.
+Method	Description
+def obtain_purchase_order_item_by_id(self,id)	This method returns the purchase order item object retrieved from the Database.
+def obtain_all_purchase_order_item_items()	This method returns list of purchase order items retrieved from the Database.
+ 
+
+Implement the following methods present in the class PurchaseOrderDAO.
+Method	Description
+def add_purchase_order(self,purchaseOrder)	This method adds the Purchase Order details to the Database.
+ 
+Implement the following methods present in the class SupplierDAO.
+Method	Description
+def obtain_supplier_by_id(self,supplierId)	This method returns the Supplier object with the id same as in parameter.
+def obtain_all_suppliers(self)	This method returns a list of suppliers retrieved from database
+
+
+Sample Input and Output4: [ For this functional requirement, 8-11 menus need to be done]
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+rani
+Enter Password
+rani
+Sorry. You don't have permission to access.
+1.Login
+2.Exit
+Choose from the above menu
+Enter Username
+srideviharish
+Enter Password
+srid
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+9
+Sales Order Details:
+User Name            Order Quantity       Total Price          Tax Amount           Sales Lead           Sale Date           
+Vidya                1                    235764.00            35964.00             Aswin Krishna        02/02/2020          
+Rani                 2                    320951.00            48959.00             Aswin Krishna        06/09/2020          
+Ajay Vivek           2                    261176.00            35996.00             Lava Gowda           04/05/2020      
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+8
+Enter Quantity of order:
+1
+Available sales order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        2                    99900.00            
+2                    iPhone 7 Plus        4                    33999.00            
+3                    Skybag New Edition   2                    35000.00            
+4                    Running shoe         10                   2999.00             
+Enter sales Order id:
+12
+Invalid Sales Order Item Id.
+Do you want to add another item details?(yes/no)
+yes
+Enter sales Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Customer Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+2                    Vidya                vidya                9635263215           vidya@yahoo.in       Mangalore, Karnataka
+6                    Rani                 rani                 7458659825           rani@gmail.com       Ckm                 
+7                    Ajay Vivek           ajai                 4563258963           avivek@yahoo.in      Puttur              
+Choose customer id:
+8
+Invalid Customer id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+8
+Enter Quantity of order:
+1
+Available sales order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        2                    99900.00            
+2                    iPhone 7 Plus        4                    33999.00            
+3                    Skybag New Edition   2                    35000.00            
+4                    Running shoe         10                   2999.00             
+Enter sales Order id:
+12
+Invalid Sales Order Item Id.
+Do you want to add another item details?(yes/no)
+yes
+Enter sales Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Customer Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+2                    Vidya                vidya                9635263215           vidya@yahoo.in       Mangalore, Karnataka
+6                    Rani                 rani                 7458659825           rani@gmail.com       Ckm                 
+7                    Ajay Vivek           ajai                 4563258963           avivek@yahoo.in      Puttur              
+Choose customer id:
+2
+Available Sales lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+4                    Aswin Krishna        akrishna             9659653232           akrishna@gmail.com   Trissur, India      
+5                    Lava Gowda           lava                 9654563212           lava@gmail.com       Kalasa              
+Choose Sales lead id:
+10
+Invalid Sales lead id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+8
+Enter Quantity of order:
+1
+Available sales order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        2                    99900.00            
+2                    iPhone 7 Plus        4                    33999.00            
+3                    Skybag New Edition   2                    35000.00            
+4                    Running shoe         10                   2999.00             
+Enter sales Order id:
+3
+Do you want to add another item details?(yes/no)
+no
+Available Customer Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+2                    Vidya                vidya                9635263215           vidya@yahoo.in       Mangalore, Karnataka
+6                    Rani                 rani                 7458659825           rani@gmail.com       Ckm                 
+7                    Ajay Vivek           ajai                 4563258963           avivek@yahoo.in      Puttur              
+BestBuy Electronix has been one of the premier electronic appliances and good dealership company with branches spread across multiple states. They have most comprehensive ranges of branded products for sale in the market. A lot of their stock has been driven by customer demand. They are experts at sourcing exactly what the client needs and offering at the best affordable price. Customer satisfaction is their primary goal and they are always looking to please their clients.
+
+Following are the business objectives of BestBuy Electronix:
+
+Exceed Customer Expectations
+Provide Goods at best prices
+Provide Quality products
+Problem Specifications
+Consider a class Brand with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class ProductType with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__description	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class ProductCategory with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__description	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class Product with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__brand	Brand
+__color	str
+__material	str
+__price	float
+__active	boolean
+__quantity	int
+__product_type	ProductType
+__product_category	ProductCategory
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class User with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__username	str
+__password	str
+__mobile_number	str
+__email	str
+__address	str
+__role	Role
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class Role with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class SalesOrder with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__customer	User
+__quantity	int
+__total_price	float
+__tax_amount	float
+__sales_lead	User
+__sale_date	Date
+__item_list	Objects of SalesOrderItem in List
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class SalesOrderItem with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__product	Product
+__quantity	int
+__unit_price	float
+__sales_order	SalesOrder
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class PurchaseOrder with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__supplier	Supplier
+__quantity	int
+__total_price	float
+__tax_amount	float
+__product_lead	User
+__purchased_date	Date
+__item_list	Objects of PurchaseOrderItem in List
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+Consider a class PurchaseOrderItem with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__product	Product
+__quantity	int
+__unit_price	float
+__purchase_order	PurchaseOrder
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+Consider a class Supplier with the following private attributes.
+
+Attribute	Data Type
+__id	int
+__name	str
+__mobile_number	str
+__email	str
+__address	str
+Included appropriate getters and setters for all the attributes in the code template
+Included a default constructor and parameterized constructor in the code template
+
+
+
+DBMS create scripts and insert queries are available as part of code template.The table and column names are case sensitive.
+
+mysql.properties : 
+[DatabaseSection]
+db.host=localhost
+db.schema=testdb
+db.username=root
+db.password=student
+
+Use the below code to retrieve the connection details from mysql.properties to establish connection 
+config.read('mysql.properties')
+dburl = config.get('DatabaseSection', 'db.host');
+dbname = config.get('DatabaseSection', 'db.schema');
+username = config.get('DatabaseSection', 'db.username');
+password = config.get('DatabaseSection', 'db.password');
+port = config.get('DatabaseSection', 'db.port');
+
+Important note - Please start working on the template code which is provided. The template code will provide the base template or format in which the end solution is expected from you. Template code is not an executable code and will help you add code on top of it to ensure you make your submissions in the right format. If the submission is NOT as per the template code format the submissions will not be accepted.
+
+[All text in bold corresponds to the input and the rest corresponds to the output].
+
+ 
+
+Implement the following functional requirements one by one.
+
+Functional Requirement1 – User Login
+
+Users should be able to login with their credentials to view the BestBuy Electronix application. If the user is logging in with invalid credentials, display appropriate error messages else allow the user to login.
+
+Classes Involved: Role, RoleDAO, User, UserDAO
+
+Implement the following method present in the RoleDAO class
+
+Method	Description
+def obtain_role_by_id(self,roleId)	This method returns the role object with the id same as in parameter.
+ 
+
+Implement the following method present in the UserDAO class
+
+Method	Description
+def validate_login(self,username,password)	This method validates the username and password and returns the user object.
+
+
+Sample Input and Output1:
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid
+[Note: Successfully logged in. Please proceed with the next functional requirement.]
+
+
+Functional Requirement2 – Add Brand, Product Type, Product Category, Product
+Add brand, product type, product category and product. This facility should be available for store manager or product lead or sales lead role only.
+
+Classes Involved: Role, RoleDAO, User, UserDAO, Brand, BrandDAO, ProductType, ProductTypeDAO, ProductCategory, ProductCategoryDAO, Product, ProductDAO
+
+
+Implement the following method present in the class BrandDAO.
+
+Method	Description
+def add_brand(self,brand)	This method inserts the brand details to the database.
+def obtain_brand_by_id(self,id)	This method returns the brand object with the id same as in parameter.
+def obtain_all_brand(self)	This method returns list of brands which is retrieved from the database.
+def display_brand()	This method displays the details of all available brands.
+Display Brand Details using the below format.
+print("%-5s %-15s\n"%("Id","Name"));
+ 
+
+Implement the following method present in the class ProductTypeDAO.
+Method	Description
+def add_product_type(self,productType)	This method inserts the product type details to the database.
+def obtain_product_type_by_id(self,id)	This method returns the product type object with the id same as in parameter.
+def obtain_all_product_type(self)	This method returns list of product types which is retrieved from the database.
+def display_product_type(self)	This method displays the details of all available product types.
+Display Product Type Details using the below format.
+print("%-5s %-15s %-15s\n"%("Id","Name","Description"));
+ 
+
+Implement the following methods present in the class ProductCategoryDAO.
+Method	Description
+def add_product_category(self,productCategory)	This method inserts the product category details to the database.
+def obtain_product_category_by_id(self,id)	This method returns the product category object with the id same as in parameter.
+def obtain_all_product_Category(self)	This method returns list of product categories which is retrieved from the database.
+def display_product_category(self)	This method displays the details of all available product categories.
+Display Product Category Details using the below format.
+print("%-5s %-30s %-15s\n"%("Id","Name","Description"));
+
+Implement the following methods present in the class ProductDAO.
+
+Method	Description
+def add_product(self,product)	This method inserts the product details to the database.
+
+
+Sample Input and Output2: [ In the menu list, there will be lot of menus. For this functional requirement, complete first 4 menus]
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+rani
+Enter Password
+rani
+Sorry. You don't have permission to access.
+1.Login
+2.Exit
+Choose from the above menu
+Enter Username
+srideviharish
+Enter Password
+srid
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+1
+Enter Name:
+Smartphone
+Enter Description:
+Mobile
+Product type already exists.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+1
+Enter Name:
+Dumbbells
+Enter Description:
+Home Gym
+Product Type Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+2
+Enter Name:
+Electronics
+Enter Description:
+Electronic items
+Product category already exists.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+2
+Enter Name:
+Books
+Enter Description:
+Book items
+Product Category Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+3
+Enter Name:
+Apple
+Brand already exists.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+3
+Enter Name:
+Alpha
+Brand Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+4
+Enter Product Name:
+iPhone 11 Pro
+Enter Product Color:
+Midnight green
+Enter Product Material:
+Aluminium
+Enter Product Price:
+99900
+Enter Product Quantity:
+4
+Choose (Id) Brand:
+Id    Name           
+1     Apple          
+2     Samsung        
+3     SkyBag         
+4     Adidas         
+5     Nike           
+6     American Tourister
+7     Lotus          
+8     Nivea          
+9     Alpha         
+1
+Choose (Id) from below product types:
+Id    Name            Description    
+1     Smartphone      Mobile         
+2     Tablet          Tablets and accessories
+3     Bagpack         Bagpack        
+4     Shoe            Shoe           
+5     Toys            Toys           
+6     Jewellery       Jewelleries    
+7     Dumbbells       Home Gym  
+1
+Choose (Id) from below product category:
+Id    Name                           Description    
+1     Electronics                    Electronics    
+2     Fashion                        Fashion        
+3     Footware                       Footwares      
+4     Home and Furniture             Home and Furniturs
+5     Books             Book items
+1
+Product with the entered specification already exists. Product could not be added.
+4
+Enter Product Name:
+Story Book
+Enter Product Color:
+Brown
+Enter Product Material:
+Paper
+Enter Product Price:
+900
+Enter Product Quantity:
+2
+Choose (Id) Brand:
+Id    Name           
+1     Apple          
+2     Samsung        
+3     SkyBag         
+4     Adidas         
+5     Nike           
+6     American Tourister
+7     Lotus          
+8     Nivea          
+9     Alpha         
+1
+Choose (Id) from below product types:
+Id    Name            Description    
+1     Smartphone      Mobile         
+2     Tablet          Tablets and accessories
+3     Bagpack         Bagpack        
+4     Shoe            Shoe           
+5     Toys            Toys           
+6     Jewellery       Jewelleries    
+7     Dumbbells       Home Gym   
+1
+Choose (Id) from below product category:
+Id    Name                           Description    
+1     Electronics                    Electronics    
+2     Fashion                        Fashion        
+3     Footware                       Footwares      
+4     Home and Furniture             Home and Furniturs
+5     Books             Book items
+1
+Product Added Successfully
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+11
+Successfully logged out!
+1.Login
+2.Exit
+Choose from the above menu
+2
+Thank you!
+
+Functional Requirement3 – Search Product, Edit Product, Display Products
+
+Search Product, Edit Product, Display Products. This facility should be available for store manager or product lead or sales lead role only.
+
+Classes Involved: Role, RoleDAO, User, UserDAO, Brand, BrandDAO, ProductType, ProductTypeDAO, ProductCategory, ProductCategoryDAO, Product, ProductDAO.
+[Note: All the methods implemented in the functional requirement2 need to be included here as well. In addition to it we have few more methods to implement here.]
+
+Implement the following methods present in the class ProductDAO.
+
+Method	Description
+def add_product(self,product)	This method inserts the product details to the database.
+def obtain_all_products(self)	This method returns list of products which is retrieved from the database.
+def obtain_product_by_id(def,id)	This method returns the product object with the id same as in parameter.
+def update_product(self,product)	This method updates the details of the product in the database.
+def obtain_product_by_name(self,name)	This method returns the product object with the name same as in parameter.
+def display_all_products(self)	Display Product Details using the below format.
+print("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n"%("Id", "Product Name","Brand","Color","Material","Price","Available Quantity","Product Type","Product Category"));
+
+Sample Input and Output3: [ In the menu list, there will be lot of menus. For this functional requirement, 5-7 menus need to be done]
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+vidhya
+Enter Password
+vidhya
+Sorry. You don't have permission to access.
+1.Login
+2.Exit
+Choose from the above menu
+Enter Username
+srideviharish
+Enter Password
+srid
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+6
+Product Details:
+Id                   Product Name         Brand                Color                Material             Price                Available Quantity   Product Type         Product Category    
+1                    iPhone 11 Pro        Apple                Midnight green       Aluminium            99900.00             4                    Smartphone           Electronics         
+2                    iPhone 7 Plus        Apple                Gold                 Aluminium            35000.00             4                    Smartphone           Electronics         
+3                    Skybag New Edition   SkyBag               Blue                 Waterproof fabrics   2999.00              12                   Bagpack              Fashion             
+4                    Jogging shoes        Adidas               Blue                 EVA                  3000.00              4                    Shoe                 Footware      
+5                    Story Book           Apple                Brown                Paper                900.00               2                    Bagpack              Electronics         
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+5
+Enter Product Id:
+10
+Product not found.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+5
+Enter Product Id:
+4
+Enter Product Details:
+Enter Name:
+Jogging shoes
+Enter Color:
+Blue
+Enter Material:
+EVA
+Enter price:
+3000
+Enter Quantity:
+4
+Is the product active?(yes/no)
+yes
+Product details updated successfully.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+7
+Enter Product Name:
+iPad
+Product not found.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+7
+Enter Product Name:
+iPhone 11 Pro
+Product Details:
+Id                   Product Name         Brand                Color                Material             Price                Available Quantity   Product Type         Product Category    
+1                    iPhone 11 Pro        Apple                Midnight green       Aluminium            99900.00             4                    Smartphone           Electronics      
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+11
+Successfully logged out!
+1.Login
+2.Exit
+Choose from the above menu
+2
+Thank you!
+
+
+Functional Requirement4 – Create Sales Order, Display Sales Order, Create Purchase Order
+
+Create Sales Order, Display Sales Order, Create Purchase Order. This facility should be available for store manager or product lead or sales lead role only.
+
+Classes Involved: SalesOrder, SalesOrderDAO, SalesOrderItem, SalesOrderItemDAO, Supplier, SupplierDAO
+
+Implement the following methods present in the class SalesOrderItemDAO
+Method	Description
+def obtain_sales_order_item_by_id(self,id)	This method returns the sales order item object with the id same as in parameter.
+def obtain_all_sales_order_items(self)	This method returns list of sales order items obtained from Database.
+ 
+
+Implement the following methods present in the class SalesOrderDAO.
+Method	Description
+def add_sales_order(self,salesOrder)	This method adds the Sales Order details to the Database.
+def obtain_all_sales_order(self)	This method returns list of Sales Order retrieved from the Database.
+def display_sales_order(self)	Display Sales Order Details using the below format.
+print("%-20s %-20s %-20s %-20s %-20s %-20s\n"%("User Name", "Order Quantity","Total Price","Tax Amount","Sales Lead","Sale Date"));
+
+Implement the following methods present in the class PurchaseOrderItemDAO.
+Method	Description
+def obtain_purchase_order_item_by_id(self,id)	This method returns the purchase order item object retrieved from the Database.
+def obtain_all_purchase_order_item_items()	This method returns list of purchase order items retrieved from the Database.
+ 
+
+Implement the following methods present in the class PurchaseOrderDAO.
+Method	Description
+def add_purchase_order(self,purchaseOrder)	This method adds the Purchase Order details to the Database.
+ 
+Implement the following methods present in the class SupplierDAO.
+Method	Description
+def obtain_supplier_by_id(self,supplierId)	This method returns the Supplier object with the id same as in parameter.
+def obtain_all_suppliers(self)	This method returns a list of suppliers retrieved from database
+
+
+Sample Input and Output4: [ For this functional requirement, 8-11 menus need to be done]
+Welcome to Best Buy Electronix!
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+srideviharish
+Enter Password
+srid1
+Invalid username or password
+1.Login
+2.Exit
+Choose from the above menu
+1
+Enter Username
+rani
+Enter Password
+rani
+Sorry. You don't have permission to access.
+1.Login
+2.Exit
+Choose from the above menu
+Enter Username
+srideviharish
+Enter Password
+srid
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+9
+Sales Order Details:
+User Name            Order Quantity       Total Price          Tax Amount           Sales Lead           Sale Date           
+Vidya                1                    235764.00            35964.00             Aswin Krishna        02/02/2020          
+Rani                 2                    320951.00            48959.00             Aswin Krishna        06/09/2020          
+Ajay Vivek           2                    261176.00            35996.00             Lava Gowda           04/05/2020      
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+8
+Enter Quantity of order:
+1
+Available sales order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        2                    99900.00            
+2                    iPhone 7 Plus        4                    33999.00            
+3                    Skybag New Edition   2                    35000.00            
+4                    Running shoe         10                   2999.00             
+Enter sales Order id:
+12
+Invalid Sales Order Item Id.
+Do you want to add another item details?(yes/no)
+yes
+Enter sales Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Customer Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+2                    Vidya                vidya                9635263215           vidya@yahoo.in       Mangalore, Karnataka
+6                    Rani                 rani                 7458659825           rani@gmail.com       Ckm                 
+7                    Ajay Vivek           ajai                 4563258963           avivek@yahoo.in      Puttur              
+Choose customer id:
+8
+Invalid Customer id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+8
+Enter Quantity of order:
+1
+Available sales order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        2                    99900.00            
+2                    iPhone 7 Plus        4                    33999.00            
+3                    Skybag New Edition   2                    35000.00            
+4                    Running shoe         10                   2999.00             
+Enter sales Order id:
+12
+Invalid Sales Order Item Id.
+Do you want to add another item details?(yes/no)
+yes
+Enter sales Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Customer Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+2                    Vidya                vidya                9635263215           vidya@yahoo.in       Mangalore, Karnataka
+6                    Rani                 rani                 7458659825           rani@gmail.com       Ckm                 
+7                    Ajay Vivek           ajai                 4563258963           avivek@yahoo.in      Puttur              
+Choose customer id:
+2
+Available Sales lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+4                    Aswin Krishna        akrishna             9659653232           akrishna@gmail.com   Trissur, India      
+5                    Lava Gowda           lava                 9654563212           lava@gmail.com       Kalasa              
+Choose Sales lead id:
+10
+Invalid Sales lead id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+8
+Enter Quantity of order:
+1
+Available sales order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        2                    99900.00            
+2                    iPhone 7 Plus        4                    33999.00            
+3                    Skybag New Edition   2                    35000.00            
+4                    Running shoe         10                   2999.00             
+Enter sales Order id:
+3
+Do you want to add another item details?(yes/no)
+no
+Available Customer Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+2                    Vidya                vidya                9635263215           vidya@yahoo.in       Mangalore, Karnataka
+6                    Rani                 rani                 7458659825           rani@gmail.com       Ckm                 
+7                    Ajay Vivek           ajai                 4563258963           avivek@yahoo.in      Puttur              
+Choose customer id:
+2
+Available Sales lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+4                    Aswin Krishna        akrishna             9659653232           akrishna@gmail.com   Trissur, India      
+5                    Lava Gowda           lava                 9654563212           lava@gmail.com       Kalasa              
+Choose Sales lead id:
+5
+Enter Sales Date(dd/MM/yyyy):
+02/02/2020
+Sales Order details added successfully.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+10
+Enter Quantity of order:
+1
+Available Purchase order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        1                    99900.00            
+2                    iPhone 7 Plus        2                    35000.00            
+3                    Skybag New Edition   6                    2999.00             
+4                    Running shoe         10                   2999.00                    
+Enter Product Order id:
+1
+Do you want to add another item details?(yes/no)
+yes
+Enter Product Order id:
+12
+Invalid Product Order Item Id.
+Do you want to add another item details?(yes/no)
+no
+Available Supplier Details:
+Id                   Name                 Mobile Number        Email-id             Address             
+1                    Nivin                80745674565          nivin@gmail.com      India               
+2                    Sristi               9632123652           sristi@gmail.com     Mangalore, India    
+3                    Aswin                7894569856           aswin@gmail.com      Trissur, Kerala     
+4                    Tej                  7458547485           tej@gmail.com        Andra Pradesh       
+Choose Supplier id:
+1
+Available Product lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+3                    Sai Teja             saitez               7456963256           saiteja@gmail.com    Andra Pradesh       
+Choose Product lead id:
+13
+Invalid Product lead id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+10
+Enter Quantity of order:
+1
+Available Purchase order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        1                    99900.00            
+2                    iPhone 7 Plus        2                    35000.00            
+3                    Skybag New Edition   6                    2999.00             
+4                    Running shoe         10                   2999.00                
+Enter Product Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Supplier Details:
+Id                   Name                 Mobile Number        Email-id             Address             
+1                    Nivin                80745674565          nivin@gmail.com      India               
+2                    Sristi               9632123652           sristi@gmail.com     Mangalore, India    
+3                    Aswin                7894569856           aswin@gmail.com      Trissur, Kerala     
+4                    Tej                  7458547485           tej@gmail.com        Andra Pradesh       
+Choose Supplier id:
+5
+Invalid Supplier id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+10
+Enter Quantity of order:
+1
+Available Purchase order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        1                    99900.00            
+2                    iPhone 7 Plus        2                    35000.00            
+3                    Skybag New Edition   6                    2999.00             
+4                    Running shoe         10                   2999.00                      
+Enter Product Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Supplier Details:
+Id                   Name                 Mobile Number        Email-id             Address             
+1                    Nivin                80745674565          nivin@gmail.com      India               
+2                    Sristi               9632123652           sristi@gmail.com     Mangalore, India    
+3                    Aswin                7894569856           aswin@gmail.com      Trissur, Kerala     
+4                    Tej                  7458547485           tej@gmail.com        Andra Pradesh       
+Choose Supplier id:
+1
+Available Product lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+3                    Sai Teja             saitez               7456963256           saiteja@gmail.com    Andra Pradesh       
+Choose Product lead id:
+3
+Enter Purchase Date(dd/MM/yyyy):
+02/02/2020
+Purchase Order details added successfully.
+
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+11
+Successfully logged out!
+1.Login
+2.Exit
+Choose from the above menu
+2
+Thank you!
+
+Choose customer id:
+2
+Available Sales lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+4                    Aswin Krishna        akrishna             9659653232           akrishna@gmail.com   Trissur, India      
+5                    Lava Gowda           lava                 9654563212           lava@gmail.com       Kalasa              
+Choose Sales lead id:
+5
+Enter Sales Date(dd/MM/yyyy):
+02/02/2020
+Sales Order details added successfully.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+10
+Enter Quantity of order:
+1
+Available Purchase order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        1                    99900.00            
+2                    iPhone 7 Plus        2                    35000.00            
+3                    Skybag New Edition   6                    2999.00             
+4                    Running shoe         10                   2999.00                    
+Enter Product Order id:
+1
+Do you want to add another item details?(yes/no)
+yes
+Enter Product Order id:
+12
+Invalid Product Order Item Id.
+Do you want to add another item details?(yes/no)
+no
+Available Supplier Details:
+Id                   Name                 Mobile Number        Email-id             Address             
+1                    Nivin                80745674565          nivin@gmail.com      India               
+2                    Sristi               9632123652           sristi@gmail.com     Mangalore, India    
+3                    Aswin                7894569856           aswin@gmail.com      Trissur, Kerala     
+4                    Tej                  7458547485           tej@gmail.com        Andra Pradesh       
+Choose Supplier id:
+1
+Available Product lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+3                    Sai Teja             saitez               7456963256           saiteja@gmail.com    Andra Pradesh       
+Choose Product lead id:
+13
+Invalid Product lead id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+10
+Enter Quantity of order:
+1
+Available Purchase order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        1                    99900.00            
+2                    iPhone 7 Plus        2                    35000.00            
+3                    Skybag New Edition   6                    2999.00             
+4                    Running shoe         10                   2999.00                
+Enter Product Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Supplier Details:
+Id                   Name                 Mobile Number        Email-id             Address             
+1                    Nivin                80745674565          nivin@gmail.com      India               
+2                    Sristi               9632123652           sristi@gmail.com     Mangalore, India    
+3                    Aswin                7894569856           aswin@gmail.com      Trissur, Kerala     
+4                    Tej                  7458547485           tej@gmail.com        Andra Pradesh       
+Choose Supplier id:
+5
+Invalid Supplier id.
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+10
+Enter Quantity of order:
+1
+Available Purchase order items:
+Id                   Product Name         Quantity             Unit Price          
+1                    iPhone 11 Pro        1                    99900.00            
+2                    iPhone 7 Plus        2                    35000.00            
+3                    Skybag New Edition   6                    2999.00             
+4                    Running shoe         10                   2999.00                      
+Enter Product Order id:
+1
+Do you want to add another item details?(yes/no)
+no
+Available Supplier Details:
+Id                   Name                 Mobile Number        Email-id             Address             
+1                    Nivin                80745674565          nivin@gmail.com      India               
+2                    Sristi               9632123652           sristi@gmail.com     Mangalore, India    
+3                    Aswin                7894569856           aswin@gmail.com      Trissur, Kerala     
+4                    Tej                  7458547485           tej@gmail.com        Andra Pradesh       
+Choose Supplier id:
+1
+Available Product lead Details:
+Id                   Name                 Username             Mobile Number        Email-id             Address             
+3                    Sai Teja             saitez               7456963256           saiteja@gmail.com    Andra Pradesh       
+Choose Product lead id:
+3
+Enter Purchase Date(dd/MM/yyyy):
+02/02/2020
+Purchase Order details added successfully.
+
+Menu
+1.Add Product Type
+2.Add Product Category
+3.Add Brand
+4.Add Product
+5.Edit Product
+6.Display Products
+7.Search Product
+8.Create Sales Order
+9.Display Sales Order
+10.Create Purchase Order
+11.Logout
+11
+Successfully logged out!
+1.Login
+2.Exit
+Choose from the above menu
+2
+Thank you!
+
