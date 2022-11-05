@@ -1,0 +1,8 @@
+number_of_people1 = int(input("Enter the number of people who watched show 1\n"))
+average1 = float(input("Enter the average rating for show 1\n"))
+number_of_people2 = int(input("Enter the number of people who watched show 2\n"))
+average2 = float(input("Enter the average rating for show 2\n"))
+number_of_people3 = int(input("Enter the number of people who watched show 3\n"))
+average3 = float(input("Enter the average rating for show 3\n"))
+average = "{0: .2f}".format((number_of_people1 * average1 + number_of_people2 * average2 + number_of_people3 * average3) / (number_of_people1 + number_of_people2 + number_of_people3))
+print("The overall average rating for the show is " + str(average))
